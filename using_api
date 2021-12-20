@@ -1,0 +1,16 @@
+import json
+import requests
+headers = {"Authorization": "Bearer ya29.a0ARrdaM9XCJrcZ3c4Lg2LNDV1z9VMoQeLJqWe5QsoqhmVon0WIu2nqgSBpNh-WUG6fBHBN9Ijcceh_kuqQ_Wmblp1ri0ZpCcvYlmF_VNi3xIBOXmQe17pPdi8WeaqtEO6l9jGRYjYnAGLAQFIynJUaI-M29_C"}
+para = {
+"name": "apple.png",
+}
+files = {
+'data': ('metadata', json.dumps(para), 'application/json; charset=UTF-8'),
+'file': open("./apple.jpeg", "rb")
+}
+r = requests.post(
+"https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart",
+headers=headers,
+files=files
+)
+print(r.text)
